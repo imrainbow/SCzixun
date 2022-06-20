@@ -6,14 +6,15 @@
      <!-- 表单开始 -->
      <van-form @submit="onSubmit">
       <van-field
-        name="用户名"
+        v-model="user.mobile"
+        name="mobile"
         placeholder="请输入手机号"
           >
           <i slot="left-icon" class="iconfont">&#xe60c;</i>
       </van-field>
       <van-field
-        type="password"
-        name="密码"
+        v-model="user.code"
+        name="code"
         placeholder="请输入密码"
         :rules="[{ required: true, message: '请填写密码' }]"
        >
@@ -31,15 +32,35 @@
 </template>
 
 <script>
+import { login } from '@/api/user'
 export default {
   name: 'loginPage',
   data () {
     return {
+      user: {
+        mobile: '',
+        code: ''
+      }
     }
   },
   methods: {
-    onSubmit (values) {
-      console.log('submit', values)
+    async onSubmit () {
+      // 获取表单数据
+      const user = this.user
+      // 表单验证
+      // 提交表单请求登陆
+      try {
+        const res = await login(user)
+        console.log('登陆成功', res)
+      } catch (err) {
+        if (err.response.status === 400) {
+          console.log('手机号或验证码错误')
+        } else {
+          console.log('登陆失败', err)
+        }
+      }
+
+      // 根据请求响应结果处理后续操作
     }
   }
 
