@@ -1,7 +1,7 @@
 @font-face {
   font-family: "iconfont";
   /* Project id 3471195 */
-  src: url('font/iconfont.woff2?t=1655703182780') format('woff2'), url('font/iconfont.woff') format('woff'), url('font/iconfont.ttf') format('truetype');
+  src: url('font/iconfont.woff2') format('woff2'), url('font/iconfont.woff') format('woff'), url('font/iconfont.ttf') format('truetype');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -135,4 +135,13 @@
 }
 .icon-wuwangluo:before {
   content: "\e615";
+}
+body {
+  background-color: #f5f7f9;
+}
+.page-nav-bar {
+  background-color: #3296fa !important;
+}
+.page-nav-bar .van-nav-bar__title {
+  color: #fff;
 }
