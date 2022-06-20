@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>赛诚资讯</h1>
+  <router-view/>
   </div>
 </template>
 
