@@ -4,10 +4,15 @@
     <van-nav-bar class="page-nav-bar" title="登陆" />
     <!-- 导航结束 -->
     <!-- 表单开始 -->
-    <van-form
-      ref="loginForm"
-      @submit="onSubmit">
-      <van-field v-model="user.mobile" name="mobile" placeholder="请输入手机号" :rules="userFormRules.mobile" type="number" maxlength="11">
+    <van-form ref="loginForm" @submit="onSubmit">
+      <van-field
+        v-model="user.mobile"
+        name="mobile"
+        placeholder="请输入手机号"
+        :rules="userFormRules.mobile"
+        type="number"
+        maxlength="11"
+      >
         <i slot="left-icon" class="iconfont">&#xe60c;</i>
       </van-field>
       <van-field
@@ -19,16 +24,17 @@
         <i slot="left-icon" class="iconfont">&#xe622;</i>
         <template #button>
           <van-count-down
-          v-if="isCountDownShow"
-          :time="1000*10"
-          format="ss s"
-          @finish="isCountDownShow = false"
+            v-if="isCountDownShow"
+            :time="1000 * 10"
+            format="ss s"
+            @finish="isCountDownShow = false"
           />
           <van-button
             v-else
             native-type="button"
             class="send-sms-btn"
-            round size="small"
+            round
+            size="small"
             type="default"
             @click="onSendSms"
             >发送验证码</van-button
@@ -46,7 +52,7 @@
 </template>
 
 <script>
-import { login } from '@/api/user'
+import { login, sendSms } from '@/api/user'
 export default {
   name: 'loginPage',
   data () {
@@ -56,10 +62,14 @@ export default {
         code: ''
       },
       userFormRules: {
-        mobile: [{ required: true, message: '手机号不能为空' },
-          { pattern: /^1[3|5|7|8]\d{9}$/, message: '手机号格式错误' }],
-        code: [{ required: true, message: '请输入密码' },
-          { pattern: /^\d{6}$/, message: '密码格式错误' }]
+        mobile: [
+          { required: true, message: '手机号不能为空' },
+          { pattern: /^1[3|5|7|8]\d{9}$/, message: '手机号格式错误' }
+        ],
+        code: [
+          { required: true, message: '请输入密码' },
+          { pattern: /^\d{6}$/, message: '密码格式错误' }
+        ]
       },
       isCountDownShow: false
     }
@@ -77,8 +87,9 @@ export default {
       })
       // 提交表单请求登陆
       try {
-        const res = await login(user)
-        console.log(res)
+        const { data } = await login(this.user)
+        this.$store.commit('setUser', data.data)
+        console.log(data)
         this.$toast.success('登陆成功')
       } catch (err) {
         if (err.response.status === 400) {
@@ -101,6 +112,17 @@ export default {
       // 2.验证通过，显示倒计时
       this.isCountDownShow = true
       // 3.请求发送验证码
+      try {
+        const res = await sendSms(this.user.mobile)
+        console.log('发送成功', res)
+      } catch (err) {
+        this.isCountDownShow = false
+        if (err.response.status === 429) {
+          this.$toast('发送太频繁了，请稍后重试')
+        } else {
+          this.$toast('发送失败，请稍后重试')
+        }
+      }
     }
   }
 }
