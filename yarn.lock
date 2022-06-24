@@ -283,7 +283,7 @@
     "chalk" "^2.0.0"
     "js-tokens" "^4.0.0"
 
-"@babel/parser@^7.16.7", "@babel/parser@^7.18.5":
+"@babel/parser@^7.16.7", "@babel/parser@^7.18.5", "@babel/parser@^7.7.0":
   "integrity" "sha512-YZWVaglMiplo7v8f1oMQ5ZPQr0vn7HPeZXxXWsxXJRjGVrzUFn9OxFQl1sb5wzfootjA/yChhW84BV+383FSOw=="
   "resolved" "https://registry.npmjs.org/@babel/parser/-/parser-7.18.5.tgz"
   "version" "7.18.5"
@@ -935,7 +935,7 @@
     "@babel/parser" "^7.16.7"
     "@babel/types" "^7.16.7"
 
-"@babel/traverse@^7.0.0", "@babel/traverse@^7.13.0", "@babel/traverse@^7.16.8", "@babel/traverse@^7.18.0", "@babel/traverse@^7.18.2", "@babel/traverse@^7.18.5":
+"@babel/traverse@^7.0.0", "@babel/traverse@^7.13.0", "@babel/traverse@^7.16.8", "@babel/traverse@^7.18.0", "@babel/traverse@^7.18.2", "@babel/traverse@^7.18.5", "@babel/traverse@^7.7.0":
   "integrity" "sha512-aKXj1KT66sBj0vVzk6rEeAO6Z9aiiQ68wfDgge3nHhA/my6xMM/7HGQUNumKZaoa2qUPQ5whJG9aAifsxUKfLA=="
   "resolved" "https://registry.npmjs.org/@babel/traverse/-/traverse-7.18.5.tgz"
   "version" "7.18.5"
@@ -951,7 +951,7 @@
     "debug" "^4.1.0"
     "globals" "^11.1.0"
 
-"@babel/types@^7.0.0", "@babel/types@^7.16.0", "@babel/types@^7.16.7", "@babel/types@^7.16.8", "@babel/types@^7.17.0", "@babel/types@^7.18.0", "@babel/types@^7.18.2", "@babel/types@^7.18.4", "@babel/types@^7.4.4":
+"@babel/types@^7.0.0", "@babel/types@^7.16.0", "@babel/types@^7.16.7", "@babel/types@^7.16.8", "@babel/types@^7.17.0", "@babel/types@^7.18.0", "@babel/types@^7.18.2", "@babel/types@^7.18.4", "@babel/types@^7.4.4", "@babel/types@^7.7.0":
   "integrity" "sha512-ThN1mBcMq5pG/Vm2IcBmPPfyPXbd8S02rS+OBIDENdufvqC7Z/jHPCv9IcP01277aKtDI8g/2XysBN4hA8niiw=="
   "resolved" "https://registry.npmjs.org/@babel/types/-/types-7.18.4.tgz"
   "version" "7.18.4"
@@ -1981,6 +1981,18 @@
     "follow-redirects" "^1.14.9"
     "form-data" "^4.0.0"
 
+"babel-eslint@^10.1.0":
+  "integrity" "sha512-ifWaTHQ0ce+448CYop8AdrQiBsGrnC+bMgfyKFdi6EsPLTAWG+QfyDeM6OH+FmWnKvEq5NnBMLvlBUPKQZoDSg=="
+  "resolved" "https://registry.npmmirror.com/babel-eslint/-/babel-eslint-10.1.0.tgz"
+  "version" "10.1.0"
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/parser" "^7.7.0"
+    "@babel/traverse" "^7.7.0"
+    "@babel/types" "^7.7.0"
+    "eslint-visitor-keys" "^1.0.0"
+    "resolve" "^1.12.0"
+
 "babel-loader@^8.2.2":
   "integrity" "sha512-OSiFfH89LrEMiWd4pLNqGz4CwJDtbs2ZVc+iGu2HrkRfPxId9F2anQj38IxWpmRfsUY0aBZYi1EFcd3mhtRMLQ=="
   "resolved" "https://registry.npmjs.org/babel-loader/-/babel-loader-8.2.5.tgz"
@@ -2021,6 +2033,11 @@
   "version" "0.3.1"
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.3.1"
+
+"babel@^6.23.0":
+  "integrity" "sha512-ZDcCaI8Vlct8PJ3DvmyqUz+5X2Ylz3ZuuItBe/74yXosk2dwyVo/aN7MCJ8HJzhnnJ+6yP4o+lDgG9MBe91DLA=="
+  "resolved" "https://registry.npmmirror.com/babel/-/babel-6.23.0.tgz"
+  "version" "6.23.0"
 
 "balanced-match@^1.0.0":
   "integrity" "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="
@@ -3154,6 +3171,11 @@
   dependencies:
     "eslint-visitor-keys" "^2.0.0"
 
+"eslint-visitor-keys@^1.0.0":
+  "integrity" "sha512-6J72N8UNa462wa/KFODt/PJ3IU60SDpC3QXC1Hjc1BXXpfL2C9R5+AU7jhe0F6GREqVMh4Juu+NY7xn+6dipUQ=="
+  "resolved" "https://registry.npmmirror.com/eslint-visitor-keys/-/eslint-visitor-keys-1.3.0.tgz"
+  "version" "1.3.0"
+
 "eslint-visitor-keys@^1.1.0":
   "integrity" "sha512-6J72N8UNa462wa/KFODt/PJ3IU60SDpC3QXC1Hjc1BXXpfL2C9R5+AU7jhe0F6GREqVMh4Juu+NY7xn+6dipUQ=="
   "resolved" "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-1.3.0.tgz"
@@ -3185,7 +3207,7 @@
     "normalize-path" "^3.0.0"
     "schema-utils" "^3.1.1"
 
-"eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8", "eslint@^6.2.0 || ^7.0.0 || ^8.0.0", "eslint@^7.0.0", "eslint@^7.0.0 || ^8.0.0", "eslint@^7.12.1", "eslint@^7.32.0", "eslint@^7.5.0 || ^8.0.0", "eslint@>=4.19.1", "eslint@>=5", "eslint@>=5.16.0", "eslint@>=6.0.0", "eslint@>=7.5.0":
+"eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8", "eslint@^6.2.0 || ^7.0.0 || ^8.0.0", "eslint@^7.0.0", "eslint@^7.0.0 || ^8.0.0", "eslint@^7.12.1", "eslint@^7.32.0", "eslint@^7.5.0 || ^8.0.0", "eslint@>= 4.12.1", "eslint@>=4.19.1", "eslint@>=5", "eslint@>=5.16.0", "eslint@>=6.0.0", "eslint@>=7.5.0":
   "integrity" "sha512-VHZ8gX+EDfz+97jGcgyGCyRia/dPOd6Xh9yPv8Bl1+SoaIwD+a/vlrOmGRUyOYu7MwUhc7CxqeaDZU13S4+EpA=="
   "resolved" "https://registry.npmjs.org/eslint/-/eslint-7.32.0.tgz"
   "version" "7.32.0"
@@ -5684,7 +5706,7 @@
   "resolved" "https://registry.npmjs.org/resolve-from/-/resolve-from-4.0.0.tgz"
   "version" "4.0.0"
 
-"resolve@^1.10.0", "resolve@^1.10.1", "resolve@^1.14.2", "resolve@^1.20.0", "resolve@^1.22.0":
+"resolve@^1.10.0", "resolve@^1.10.1", "resolve@^1.12.0", "resolve@^1.14.2", "resolve@^1.20.0", "resolve@^1.22.0":
   "integrity" "sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw=="
   "resolved" "https://registry.npmjs.org/resolve/-/resolve-1.22.1.tgz"
   "version" "1.22.1"

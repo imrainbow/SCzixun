@@ -1,10 +1,22 @@
 <template>
   <div class="login-container">
     <!-- 导航开始 -->
-    <van-nav-bar class="page-nav-bar" title="登陆" />
+    <van-nav-bar
+      class="page-nav-bar"
+      title="登陆"
+    >
+      <van-icon
+        slot="left"
+        name="cross"
+        @click="$router.back()"
+      />
+    </van-nav-bar>
     <!-- 导航结束 -->
     <!-- 表单开始 -->
-    <van-form ref="loginForm" @submit="onSubmit">
+    <van-form
+      ref="loginForm"
+      @submit="onSubmit"
+    >
       <van-field
         v-model="user.mobile"
         name="mobile"
@@ -13,7 +25,10 @@
         type="number"
         maxlength="11"
       >
-        <i slot="left-icon" class="iconfont">&#xe60c;</i>
+        <i
+          slot="left-icon"
+          class="iconfont"
+        >&#xe60c;</i>
       </van-field>
       <van-field
         v-model="user.code"
@@ -21,7 +36,10 @@
         placeholder="请输入密码"
         :rules="userFormRules.code"
       >
-        <i slot="left-icon" class="iconfont">&#xe622;</i>
+        <i
+          slot="left-icon"
+          class="iconfont"
+        >&#xe622;</i>
         <template #button>
           <van-count-down
             v-if="isCountDownShow"
@@ -37,14 +55,15 @@
             size="small"
             type="default"
             @click="onSendSms"
-            >发送验证码</van-button
-          >
-        </template>
-      </van-field>
+          >发送验证码</van-button>
+        </template></van-field>
       <div class="login-btn-wrap">
-        <van-button class="login-btn" block type="info" native-type="submit"
-          >登陆</van-button
-        >
+        <van-button
+          class="login-btn"
+          block
+          type="info"
+          native-type="submit"
+        >登陆</van-button>
       </div>
     </van-form>
     <!-- 表单结束 -->
@@ -54,8 +73,8 @@
 <script>
 import { login, sendSms } from '@/api/user'
 export default {
-  name: 'loginPage',
-  data () {
+  name: 'LoginPage',
+  data() {
     return {
       user: {
         mobile: '',
@@ -75,9 +94,10 @@ export default {
     }
   },
   methods: {
-    async onSubmit () {
+    async onSubmit() {
       // 获取表单数据
       const user = this.user
+      console.log(user)
       // 表单验证
       // 在组件中必需通过this.$toast来调用toast组件
       this.$toast.loading({
@@ -91,6 +111,8 @@ export default {
         this.$store.commit('setUser', data.data)
         console.log(data)
         this.$toast.success('登陆成功')
+        // 登陆成功，跳转回原来页面
+        this.$router.push('/my')
       } catch (err) {
         if (err.response.status === 400) {
           this.$toast.fail('手机号或验证码错误')
@@ -101,7 +123,7 @@ export default {
 
       // 根据请求响应结果处理后续操作
     },
-    async onSendSms () {
+    async onSendSms() {
       // 1.校验手机号
       try {
         await this.$refs.loginForm.validate('mobile')
@@ -130,9 +152,14 @@ export default {
 
 <style scoped lang="less">
 .login-container {
+  .page-nav-bar .van-icon {
+    color: #fff;
+  }
+
   .iconfont {
     font-size: 37px;
   }
+
   .send-sms-btn {
     background-color: #ededed;
     width: 156px;
@@ -141,8 +168,10 @@ export default {
     font-size: 22px;
     color: #666;
   }
+
   .login-btn-wrap {
     padding: 53px 33px;
+
     .login-btn {
       background-color: #6db4fb;
       border: none;

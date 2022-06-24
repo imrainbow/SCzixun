@@ -16,7 +16,7 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
-    setUser (state, data) {
+    setUser(state, data) {
       state.user = data
       // 为了防止刷新丢失，我们需要将设备备份到本地存储
       // window.localStorage.setItem(TOKEN_KEY, JSON.stringify(state.user))
