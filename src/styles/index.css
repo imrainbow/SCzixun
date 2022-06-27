@@ -144,4 +144,5 @@ body {
 }
 .page-nav-bar .van-nav-bar__title {
   color: #fff;
+  max-width: unset;
 }
