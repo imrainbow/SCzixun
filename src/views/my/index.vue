@@ -114,10 +114,18 @@
 
 <script>
 import { mapState } from 'vuex'
+import { getUserInfo } from '@/api/user'
+
 export default {
   name: 'MyIndex',
   computed: {
     ...mapState(['user'])
+  },
+  created() {
+    // 如果用户登陆了，则马上加载用户信息
+    if (this.user) {
+      this.loadUserInfo()
+    }
   },
   methods: {
     onLogout() {
@@ -136,7 +144,16 @@ export default {
           // on cancel
           console.log('取消执行这里')
         })
+    },
+    async loadUserInfo() {
+      try {
+        const { data } = await getUserInfo()
+        this.userInfo = data.data
+      } catch (err) {
+        this.$toast('获取数据失败，请稍后重试')
+      }
     }
+
   }
 
 }

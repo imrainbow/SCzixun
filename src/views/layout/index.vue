@@ -58,6 +58,7 @@ export default {
 </script>
 <style scoped lang="less">
 .layout-container {
+  padding-bottom: 100px;
   .layout-tabbar {
     i.iconfont {
       font-size: 40px;
