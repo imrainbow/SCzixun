@@ -21,14 +21,18 @@
       swipeable
       class="channel-tab"
     >
-      <van-tab title="标签 1">
-        <ArticleList />
+      <van-tab
+        v-for="channel in channels"
+        :key="channel.id"
+        :title="channel.name"
+      >
+        <!-- 文章列表 -->
+        <!-- <ArticleList :channel="channel" /> -->
+        <article-list
+          ref="article-list"
+          :channel="channel"
+        />
       </van-tab>
-      <van-tab title="标签 2">内容 2</van-tab>
-      <van-tab title="标签 3">内容 3</van-tab>
-      <van-tab title="标签 4">内容 4</van-tab>
-      <van-tab title="标签 3">内容 5</van-tab>
-      <van-tab title="标签 4">内容 6</van-tab>
       <div
         slot="nav-right"
         class="placeholder"
@@ -41,11 +45,16 @@
       </div>
     </van-tabs>
     <!-- /频道列表 -->
+    <!-- 文章列表项 -->
+    <ArticleList />
+    <!-- /文章列表项 -->
   </div>
 </template>
 
 <script>
+import { getUserChannels } from '@/api/user'
 import ArticleList from './compontens/article-list.vue'
+
 export default {
   name: 'HomeIndex',
   components: {
@@ -53,7 +62,24 @@ export default {
   },
   data() {
     return {
-      active: 0
+      active: 0,
+      channels: [] // 频道列表
+    }
+  },
+  computed: {
+  },
+  created() {
+    this.loadChannels()
+  },
+  methods: {
+    async loadChannels() {
+      try {
+        const { data } = await getUserChannels()
+        this.channels = data.data.channels
+        // console.log(data)
+      } catch (err) {
+        this.$toast('获取频道数据失败')
+      }
     }
   }
 
@@ -62,6 +88,7 @@ export default {
 
 <style scoped lang="less">
 .home-container {
+  padding-bottom: 100px;
   .van-nav-bar__content {
   .van-nav-bar__title  {
     max-width: unset;

@@ -1,0 +1,107 @@
+@baseUrl = http://haozhiyuan.ltd
+# @baseUrl = http://localhost:8000
+
+# @name login
+POST  {{baseUrl}}/app/v1_0/authorizations
+Content-Type: application/json
+
+{
+    "code"	: "888888",
+    "mobile"  : "18108044795"
+}
+
+###
+@authToken = {{login.response.body.data.token}}
+
+###
+GET    {{baseUrl}}/app/v1_0/user
+Authorization: {{authToken}}
+Content-Type: application/json
+
+###
+PATCH    {{baseUrl}}/app/v1_0/user/profile
+Authorization: {{authToken}}
+Content-Type: application/json
+
+{
+"name":	"赛诚一枝花",
+"gender":	0,
+"birthday":	"2018-12-20",	
+"real_name"	:"李四",	
+"id_number":	"513556666671234556",
+"intro":"法外狂徒xxxx"
+}
+
+###
+GET     {{baseUrl}}/app/v1_0/user/channels
+Authorization: {{authToken}}
+Content-Type: application/json
+
+
+###
+POST  {{baseUrl}}/app/v1_1/articles HTTP/1.1
+Authorization: {{authToken}}
+Content-Type: application/json
+
+{
+	"title":    "dvhdb", 
+	"author_id":  2, 
+	"author_name": "赛诚郭富城", 
+	"channel_id":   2,
+	"channel_name": "后端",
+	"layout":    0, 
+	"flag":       0, 
+	"images":    [], 
+	"labels":  ["vue", "前后端端"], 
+	"content":   "后端实战", 
+	"likes":     34, 
+	"collection": 4, 
+	"comment":  1,   
+	"views":     19, 
+	"province_id": 1,
+	"city_id":   1,  
+	"county_id":  4, 
+	"sync_status":  1,
+	"origin":  1     
+}
+
+###
+GET  {{baseUrl}}/app/v1_1/articles?channel_id=1
+Authorization: {{authToken}}
+
+
+###
+GET  {{baseUrl}}/api/company/1 HTTP/1.1
+Authorization: {{authToken}}
+
+###
+POST {{baseUrl}}/api/sys/profile HTTP/1.1
+Authorization: {{authToken}}
+Content-Type: application/json
+
+###
+GET  {{baseUrl}}/api/sys/role?page=1&pagesize=100 HTTP/1.1
+Authorization: {{authToken}}
+
+###
+GET  {{baseUrl}}/api/sys/role/1064098829009293312 HTTP/1.1
+Authorization: {{authToken}}
+
+###
+GET  {{baseUrl}}/api/sys/permission HTTP/1.1
+Authorization: {{authToken}}
+
+###
+GET  {{baseUrl}}/api/sys/user/1 HTTP/1.1
+Authorization: {{authToken}}
+
+
+###
+GET   http://haozhiyuan.ltd/app/v1_0/sms/codes/18108044795
+
+###
+PUT  http://haozhiyuan.ltd/app/v1_0/authorizations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTcwMTQ5MTAsImlzcyI6InNhaWNoZW5nIn0.R-riNakzyyytfyJbQcAswphf6HLQ6bebZ3TxecxHxhk
+Content-Type: application/x-www-form-urlencoded
+
+target=18108044795

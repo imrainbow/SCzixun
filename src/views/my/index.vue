@@ -19,6 +19,7 @@
           <van-button
             size="mini"
             round
+            to="/user"
           >编辑资料</van-button>
         </div>
       </div>
@@ -153,7 +154,6 @@ export default {
         this.$toast('获取数据失败，请稍后重试')
       }
     }
-
   }
 
 }
